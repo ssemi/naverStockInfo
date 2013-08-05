@@ -26,9 +26,9 @@ def naverStockInfo(stockCode):
 	#print html2text(today.decode('ascii', 'ignore'))
 	stockTitle = soup.h2.a.string
 	stockPrice = html2text(str(blinds[0])).strip()
-	stockPriceRateKor = html2text(str(icos[0]).decode('utf-8')).replace("하락", "▼").replace("상승", "▲").strip()
+	stockPriceRateKor = html2text(str(icos[0]).decode('utf-8')).replace("하락", "▼").replace("상승", "▲").replace("보합","-").strip()
 	stockPriceRate = html2text(str(blinds[1])).strip()
-	stockPricePercentSymbol = html2text(str(icos[1])).strip()
+	stockPricePercentSymbol = html2text(str(icos[1])).strip() if len(icos) > 1 else ''
 	stockPricePercent = html2text(str(blinds[2])).strip()
 	stockPriceInfo = (stockTitle, stockPrice, stockPriceRateKor, stockPriceRate, stockPricePercentSymbol, stockPricePercent, stockCode)
 
